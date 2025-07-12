@@ -48,6 +48,8 @@ function App() {
     return c.count / hours;
   };
 
+const computeSum = () => counters.reduce((sum, c) => sum + (c.count || 0), 0);
+
   const globalNorm = () => {
     if (counters.length <= 1) return null;
     const norms = counters.map(computeNorm).filter(n => n > 0);
@@ -110,7 +112,7 @@ function App() {
   return (
     <div className="app">
       <Menu onAdd={addCounter} onReset={resetAll} />
-      {globalNorm()!=null && <div className="global-norm">Norma: {globalNorm().toFixed(2)} /h</div>}
+      {globalNorm()!=null && <div className="global-norm">Suma: {computeSum()} | Norma: {globalNorm().toFixed(2)} /h</div>}
       <div className="panel-container">
         {tree && <Panel node={tree} onClick={updateCounter} />}
       </div>
