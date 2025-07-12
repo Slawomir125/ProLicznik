@@ -1,0 +1,41 @@
+.container{
+    width: 100% !important;
+    height: auto;
+}
+
+.menuToggle{
+    float: right;
+    
+    width: 12.5%;
+}
+
+
+.menuContent{
+    width: 60%;
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.678);
+    margin: 0 auto;
+    padding: 5vh 0;
+    border-radius: 20px;
+    margin-top: 25%;
+}
+.menu-container {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 10;
+}
+.menu-content {
+  background: rgba(255,255,255,0.9);
+  padding: 8px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.menu-content input {
+  display: block;
+  margin-bottom: 4px;
+  width: 100%;
+}
+.menu-content button {
+  margin-right: 4px;
+}
