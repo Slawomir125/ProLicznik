@@ -110,7 +110,7 @@ function App() {
   return (
     <div className="app">
       <Menu onAdd={addCounter} onReset={resetAll} />
-      {globalNorm()!=null && <div className="global-norm">Średnia: {globalNorm().toFixed(2)} kl/h</div>}
+      {globalNorm()!=null && <div className="global-norm">Norma: {globalNorm().toFixed(2)} /h</div>}
       <div className="panel-container">
         {tree && <Panel node={tree} onClick={updateCounter} />}
       </div>

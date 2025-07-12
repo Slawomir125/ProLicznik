@@ -1,9 +1,9 @@
 #root {
-  max-width: 90%;
+  max-width: 100%;
   margin: 0 auto;
   padding: 0;
   text-align: center;
-  width: 90%;
+  width: 100%;
 }
 .app {
   display: flex;
@@ -15,7 +15,7 @@
 .global-norm {
   flex: 0 0 auto;
   padding: 8px;
-  text-align: center;
+  text-align: right;
 }
 .panel-container {
   flex: 1;

@@ -9,33 +9,45 @@
     width: 12.5%;
 }
 
-
 .menuContent{
     width: 60%;
     height: auto;
     background-color: rgba(0, 0, 0, 0.678);
     margin: 0 auto;
-    padding: 5vh 0;
+    padding: 5vh;
     border-radius: 20px;
     margin-top: 25%;
 }
 .menu-container {
   position: absolute;
-  top: 8px;
-  left: 8px;
+  top: 0.3vh;
+  left: 0.3vh;
   z-index: 10;
 }
+.menu-container button{
+  background: rgba(29, 29, 29, 0.9);
+  padding: 5px 10px ;
+  border-radius: 3px;
+  font-size: 19px;
+}
 .menu-content {
-  background: rgba(255,255,255,0.9);
-  padding: 8px;
+  background: rgba(29, 29, 29, 0.9);
+  padding: 10px 20px 10px 20px;
   border-radius: 4px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  width: 100%;
 }
 .menu-content input {
   display: block;
-  margin-bottom: 4px;
-  width: 100%;
+  margin-bottom: 10px;
+  width: 90%;
+  border-radius: 5px;
+  font-size: 1.5vh;
 }
 .menu-content button {
-  margin-right: 4px;
+  margin-right: 10px;
+  font-size: 1.5vh;
+  background-color: rgba(37, 37, 37, 0.856);
+  padding: 5px;
+  border-radius: 3px;
 }

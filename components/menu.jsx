@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import './menu.css';
 
 export default function Menu({ onAdd, onReset }) {
@@ -16,17 +17,45 @@ export default function Menu({ onAdd, onReset }) {
 
   return (
     <div className="menu-container">
-      <button onClick={() => setOpen(!open)}>Menu</button>
-      {open && (
-        <div className="menu-content">
-          <form onSubmit={handleSubmit}>
-            <input value={name} onChange={e => setName(e.target.value)} placeholder="Nazwa Licznika" />
-            <input type="color" value={color} onChange={e => setColor(e.target.value)} />
-            <button type="submit">Dodaj</button>
-            <button type="button" onClick={onReset}>Usuń dane</button>
-          </form>
-        </div>
-      )}
+      <AnimatePresence mode="wait">
+        {open ? (
+          <motion.div
+            key="content"
+            className="menu-content"
+            onMouseLeave={() => setOpen(false)}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <form onSubmit={handleSubmit}>
+              <input
+                value={name}
+                onChange={e => setName(e.target.value)}
+                placeholder="Nazwa Licznika"
+              />
+              <input
+                type="color"
+                value={color}
+                onChange={e => setColor(e.target.value)}
+              />
+              <button type="submit">Dodaj</button>
+              <button type="button" onClick={onReset}>Usuń dane</button>
+            </form>
+          </motion.div>
+        ) : (
+          <motion.button
+            key="button"
+            onClick={() => setOpen(true)}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            Menu
+          </motion.button>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
