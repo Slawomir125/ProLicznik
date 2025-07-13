@@ -42,14 +42,12 @@ function App() {
     }));
   };
 
+  const computeSum = () => counters.reduce((sum, c) => sum + (c.count || 0), 0);
   const computeNorm = (c) => {
     if (!c.firstClick || c.count === 0) return 0;
     const hours = (Date.now() - c.firstClick) / 36e5;
     return c.count / hours;
   };
-
-const computeSum = () => counters.reduce((sum, c) => sum + (c.count || 0), 0);
-
   const globalNorm = () => {
     if (counters.length <= 1) return null;
     const norms = counters.map(computeNorm).filter(n => n > 0);
@@ -57,8 +55,7 @@ const computeSum = () => counters.reduce((sum, c) => sum + (c.count || 0), 0);
     return norms.reduce((a,b) => a + b, 0) / norms.length;
   };
 
-  // Build panel layout, with guaranteed half-width for 3 counters
-  const buildTree = () => {
+   const buildTree = () => {
     const count = counters.length;
     if (count === 0) return null;
 
@@ -112,7 +109,7 @@ const computeSum = () => counters.reduce((sum, c) => sum + (c.count || 0), 0);
   return (
     <div className="app">
       <Menu onAdd={addCounter} onReset={resetAll} />
-      {globalNorm()!=null && <div className="global-norm">Suma: {computeSum()} | Norma: {globalNorm().toFixed(2)} /h</div>}
+      {tree && <div className="global-norm">Suma: {computeSum()} &nbsp; Norma: {globalNorm()?.toFixed(2)} /h</div>}
       <div className="panel-container">
         {tree && <Panel node={tree} onClick={updateCounter} />}
       </div>
