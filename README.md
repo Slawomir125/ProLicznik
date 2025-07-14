@@ -1,12 +1,37 @@
-# React + Vite
+ProLicznik
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ProLicznik to lekka i szybka aplikacja webowa napisana w React, która pozwala tworzyć wiele liczników z własnymi nazwami i kolorami. Projekt stworzony przez ucznia technikum z myślą o prostocie, nowoczesnym wyglądzie i eksperymentowaniu z dynamicznym interfejsem.
 
-Currently, two official plugins are available:
+    Działająca aplikacja: https://slawomir125.github.io/ProLicznik/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Co potrafi ProLicznik?
 
-## Expanding the ESLint configuration
+    Dodawanie liczników z własnym kolorem i nazwą
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+    Liczenie kliknięć dla każdego licznika osobno
+
+    Obliczanie sumy kliknięć ze wszystkich liczników
+
+    Pokazywanie średniej liczby kliknięć na godzinę ("norma")
+
+    Automatyczne rozmieszczanie liczników na ekranie (dynamiczne drzewo)
+
+    Zapamiętywanie stanu w ciasteczkach przez 24h
+
+Jak to działa?
+
+    Gdy klikniesz w licznik, jego wartość się zwększa
+
+    Przy pierwszym kliknięciu zapamiętuje się czas, by obliczać normę
+
+    Aplikacja zapisuje wszystkie dane w ciasteczkach, więc po odświeżeniu nic nie znika
+
+    Jeśli są przynajmniej dwa liczniki, pokazywana jest średnia norma /h
+
+Technologie
+
+    React (z hookami: useState, useEffect, useMemo)
+
+    JS-Cookie – do ciasteczek
+
+    Flexbox – dynamiczny układ liczników
