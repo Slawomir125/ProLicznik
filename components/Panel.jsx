@@ -1,30 +1,32 @@
 import React from 'react';
 import './Panel.css';
 
+// Komponent rekurencyjny odpowiedzialny za wyświetlanie paneli (liczników lub drzew)
 export default function Panel({ node, onClick }) {
+  // Jeśli node to liść (czyli konkretny licznik)
   if (node.leaf) {
-    const c = node.counter;
+    // Destrukturyzacja danych z licznika
+    const { id, color, name, count } = node.counter;
+
     return (
       <div
         className="panel"
-        style={{ backgroundColor: c.color, ...node.style }}
-        onClick={() => onClick(c.id)}
+        style={{ backgroundColor: color, ...node.style }} // ustawienie koloru tła i stylu
+        onClick={() => onClick(id)} // obsługa kliknięcia, przekazuje ID licznika
       >
-        <div className="panel-header">{c.name}</div>
-        <div className="panel-body">{c.count}</div>
-        {c.count===1 && <div className="panel-footer">Norma: {(c.count/1).toFixed(2)}</div>}
+        <div className="panel-header">{name}</div>
+        <div className="panel-body">{count}</div>
       </div>
     );
   }
-  const baseStyle = {
-    ...node.style,
-    width: node.style?.width || '100%',
-    height: node.style?.height || '100%'
-  };
+
+  // Jeśli node to węzeł (czyli podział na dzieci)
   return (
-    <div style={baseStyle}>
-      <Panel node={node.children[0]} onClick={onClick} />
-      <Panel node={node.children[1]} onClick={onClick} />
+    <div style={{ width: '100%', height: '100%', ...node.style }}> {/* wrapper dla dzieci */}
+      {node.children.map((child, i) => (
+        // Rekurencyjne renderowanie dzieci
+        <Panel key={i} node={child} onClick={onClick} />
+      ))}
     </div>
   );
 }

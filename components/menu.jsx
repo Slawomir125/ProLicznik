@@ -2,6 +2,13 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './menu.css';
 
+// Funkcja czyszcząca input z potencjalnej podatności
+function sanitizeInput(input) {
+  const div = document.createElement('div');
+  div.textContent = input;
+  return div.innerHTML.trim(); // dodatkowo trim na puste spacje
+}
+
 export default function Menu({ onAdd, onReset }) {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState('');
@@ -9,8 +16,9 @@ export default function Menu({ onAdd, onReset }) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (!name) return;
-    onAdd({ name, color });
+    const cleanName = sanitizeInput(name);
+    if (!cleanName) return;
+    onAdd({ name: cleanName, color });
     setName('');
     setOpen(false);
   };
